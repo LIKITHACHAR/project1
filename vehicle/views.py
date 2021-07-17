@@ -423,7 +423,7 @@ def rc(request):
                   
                   return(request) 
 def ins(request):
-          
+        #   fdfdffdfd
               saverecord=image()
               saverecord.ima=request.FILES['ima1']
               insurance="INSURANCE"+str(request.session['id'])
