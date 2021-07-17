@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>
+        login and Registration 
+    </title>
+
+   {% load static %}
+    <link rel="stylesheet " href="{% static 'css.css'%}">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    
+   
+    </head>
+    <body>
+        
+        <form method="POST">
+            {% csrf_token %}
+        <div class="login-page">
+            <div class="form">
+                <form class="register">
+                    <input type="text" placeholder="user name" name="uname" required/>
+                    <input type="password" placeholder="password" name="pwd" required/>
+                    <input type="email" placeholder="email id" name="email" required/>
+                    <input type="number" placeholder="phone number" name="phone" required/>
+                    <button  type="submit" value="submit" > Create </button>
+                    
+                          
+                    
+        
+                         {% if messages %}
+                         {% for msg in messages %}
+                         <p id="msg" style="color:green;">{{msg}}</p>
+                         {% endfor %}
+
+                         {% endif %}
+                         {%if error%}
+                      <div><p id="er" style="color: red;">{{error}}</p> </div>
+                        {% endif %}
+
+                    <p class="message">Already Registerd?<a href="in.html"> Login</a></p>
+                </form>
+            </form>
+               
+            </div>
+        </div> 
+           
+            </form>
+               
+            </div>
+        </div> 
+        <script >
+       
+         </script>
+        
+    </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      HOME 
+    </title>
+    {% load static %}
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    
+    <link rel="stylesheet" type="text/css"href="{% static 'cd.css'%}?version=51"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'grid.css'%}?version=51"> 
+     
+
+
+    
+     
+
+    <!--script src="{%static 'headscript.js'%}"></script -->
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <header id="header" class="header" >
+             <div class="header_panel">
+                <div class="container">
+                    <div class="brand ">
+                        <img src="{% static 'logo.jpg'%}" class=logo alt="logo" >
+                        <h1 class="brand_name" 
+                           
+                        >
+                            <a href="loged.html">TRAFFIC</a>
+                        </h1>
+                       
+                        <h5 class="brand_slogan">
+                            Police department
+                        </h5>
+                    </div>
+                </div>
+            </div> 
+            
+            <div >
+                <button type="button" class="btn-logout" onclick="Logout()"  > Logout </button>
+           </div>
+            <div id="stuck_container" class="stuck_container">
+                <div class="container">
+                    <nav class="nav">
+                        <ul class="sf-menu">
+                            <li >
+                                <a href="loged.html">About us</a>
+                            </li>
+                            <li class="active">
+                                <a href="services.html">services</a>
+                            </li>
+                            <li>
+                                <a href="fine.html">Pay fine</a>
+                           
+                            </li>
+                            <li>
+                                <a href="loged.html">Generate QR</a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    
+        
+        </header>
+        <!-- content -->
+        <section id="content" class="content">
+           
+            <div class="box-color">
+                <div class="box9">
+                  <div class="container">
+                      <h3>Featured Services</h3>
+                     
+                          <div class="box3">
+                            <div class="container">
+                                
+                                 <form  action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    {% if kk %}
+                                    <!-- <label for=""> Image </label> -->
+                                    <table class="table table-striped table-hover">
+                                        <thead >
+                                            <tr>
+                                                <th scope="col">RC CARD</th>
+                                                <th> <input type="file"  name="ima" accept="image/png, image/gif, image/jpeg" required style="margin-bottom:2rem ;" >  </input></th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <thead >
+                                            <tr>
+                                                <th scope="col">INSURANCE</th>
+                                                <th> <input type="file"  name="ima1" accept="image/png, image/gif, image/jpeg" required style="margin-bottom:2rem ;" >  </input></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <thead >
+                                            <tr>
+                                                <th scope="col">LICENCE</th>
+                                                <th> <input type="file"  name="ima2" accept="image/png, image/gif, image/jpeg" required style="margin-bottom:2rem ;">  </input></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <thead >
+                                            <tr>
+                                                <th scope="col">EMISSION</th>
+                                                <th> <input type="file"  name="ima3" accept="image/png, image/gif, image/jpeg" required style="margin-bottom:2rem ;">  </input></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        
+                                        
+                                    </table>
+                                    
+                                    
+                                    
+                                    <button type="submit" value="submit" class="btn-upload" style="margin-top: 2rem;">ok</button>
+                                    
+                                    
+                                     {% endif %}
+
+                                    {% if messages %}
+                                    {% for msg in messages %}
+                                    <p id="msg" style="color:red;">{{msg}}</p>
+                                    {% endfor %}
+           
+                                    {% endif %}
+
+                                    {%if error%}
+                                  <div><p id="er" style="color:green;">{{error}}</p> </div>
+                                   {% endif %}
+                                </form>
+                                {% if view %}
+                                <div><p id="er" style="color:green;">{{view}}</p> </div>
+                                <form action="/view" >
+                                    <button  class="btn-upload" style="margin-top: 50px;">view all images  </button>
+                                   
+                                    {% for image in data %}
+                                    <table class="table table-striped table-hover" style="margin: top 2rem;">
+                                    <thead  >
+                                        <tr >
+                                            <th scope="col" >{{ image.ima_filename }}</th>
+                                            <th scope="col" > <a href="{{ image.ima.url }}" class="btn-upload"  >view</a>  </th>
+                                           
+                                        </tr>
+                                    </thead>
+                                </table>
+                                    
+                                    
+                                   <!-- <tr>
+                                       <td>{{ image.ima_filename }}</td>
+                                       
+                                       <td>
+
+                                           <a href="{{ image.ima.url }}" class="btn-upload">view</a>
+                                       </td>
+                                   </tr> -->
+                                   {% endfor %}
+                                   {% endif %}
+                                   {% if erg %}
+                                   <form action="reupload" >
+                                   
+                                   
+                                    
+                                    
+                                    
+                                   
+                                       <button  class="btn-upload" style="margin-top: 50px;">reupload </button>
+
+                                    
+                                    </form>
+                                    {% endif %}
+                                <!-- <hr>
+                                 {% if obj %}
+                                 <h3>uploaded : {{img_obj.caption}}</h3>
+                                 <img src="{{ obj.image.url}}" alt="image" class="img-thumbnail">
+                                 {% endif %}
+
+                                 {% for x in img %} 
+                                 <img src="{{ x.image.url}}" alt="..." class="img-thumbnail">
+                                  <hr>
+                                 {% endfor %} --> 
+                            </div>
+                        </div>
+                        <div class="box-color">
+                            <div class="box6">
+                                <div class="container">
+                                    <h3 class="primary">People and their freedom</h3>
+                                    <div class="row">
+                                        <div class="grid_6">
+                                            <div class="box_cnt message">
+                                                <img class="centerImg" src="{% static 'dr.png'%}" alt="policeman"/>
+                                                <h5>powerfull people come from power full places </h5>
+                                                <p>drun and drive is prohibitted in case of any rash driving found call us using telephone number given below in footer  </p>
+                                            </div>
+                                        </div>
+                                        <div class="grid_6">
+                                            <div class="box_cnt message">
+                                                <img class="" src="{% static 'rx.png'%}" alt="policeman"/>
+                                                <h5>maga cops </h5>
+                                                <p>modification of a  2 stroke bike is legal in 2022 hence any 2 stroke can be modified with cat muffler </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                       </div>
+                      </div>
+                 </div>
+                </div>
+           
+        </section>
+        <!-- <form method="POST"> -->
+            {% csrf_token %} 
+        
+        
+        <script >
+            function Logout(){
+                window.location="in.html";
+            }
+            
+         </script>
+         </div>
+        <!--footer-->
+         <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_4">
+                        <div class="box_aside fa-phone">
+                            <span id="phone">Telephone: +1 800 603 6035</span><br>
+                             <span id="email"> E-mail: <a >trafficpolice.org</a></span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside fa-map-marker">
+                           <label class="primary">Police</label><br>
+                           <span id="adress">#27 peenya police station <br>
+                            Bangalore-560057</span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside" id="social_block">
+                            <label class="primary">Police</label>&nbsp; © <span id="copyright-year"></span> |
+                            <a class="footer_link" ></a>Privacy Policy</a>
+         
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </footer>
+    </div>
+    </body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <a href="#" id="toTop" class="toTop fa  fa-angle-up" style="display: block;"></a> -->
+</html>

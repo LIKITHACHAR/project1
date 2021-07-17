@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        forgot password
+    </title>
+    {% load static %}
+    <link rel="stylesheet " href="{% static 'css.css'%}">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    
+   
+    </head>
+    <body>
+        
+        
+
+          <div class="log">
+             <div class="form">
+               
+               
+                     
+                   <form   method="POST">
+                    {% csrf_token %} 
+                     <input type="email" placeholder=" email " name="uname" required/>
+                     
+                     <button type="submit"> submit </button>
+                     <div> 
+                         {% if messages %}
+                         {% for msg in messages %}
+                         <p id="msg" style="color:green;">{{msg}}</p>
+                         {% endfor %}
+                         {% endif %}
+
+                     </div>
+                     
+                     <p class="message"> Go to login page |   <a href="in.html"> Login </a></p> 
+
+                   </form>
+                
+              </div>
+            </div> 
+       
+
+        <script >
+       
+         </script>
+        
+    </body>
+</html>

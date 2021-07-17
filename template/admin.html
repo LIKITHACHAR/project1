@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        login 
+    </title>
+    {% load static %}
+    <link rel="stylesheet " href="{% static 'login.css'%}?v=1.1">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+
+   
+    </head>
+    <body>
+        
+        
+        
+          <div class="log">
+            <div class='button-box'>
+                <div id='btn'></div>
+                <button type='submit' onclick='user()'class='toggle-btn'>user</button>
+                <button type='submit' onclick='admin()' class='toggle-btn'>Admin</button>
+            </div>
+            
+             <div class="form">
+               
+                
+                     
+                   <form method="POST">
+                    {% csrf_token %} 
+                     <input type="text" placeholder="user name" name="uname" required/>
+                     <input type="password" placeholder="password" name="pwd"  required/>
+                     <button type="submit"> Login </button>
+                     <div> 
+                         {% if messages %}
+                         {% for msg in messages %}
+                         <p id="msg" style="color: red;">{{msg}}</p>
+                         {% endfor %}
+                         {% endif %}
+
+                     </div>
+                     <p> <a class="fgpw" href="forgotpw.html"> Forgot password? </a></p>
+                     
+                      
+                   </form>
+                
+              </div>
+            </div> 
+       
+
+        <script >
+       
+            function admin(){
+                window.location="admin.html";
+            }
+
+                function user(){
+                window.location="in.html";
+            }
+         
+         </script>
+        
+    </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      HOME 
+    </title>
+    {% load static %}
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    
+    <link rel="stylesheet" href="{% static 'cd.css'%}?v=1.1"> 
+    <link rel="stylesheet" href="{% static 'grid.css'%}?v=1.1"> 
+    
+    
+    
+     
+
+    <!--script src="{%static 'headscript.js'%}"></script -->
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <header id="header" class="header" >
+             <div class="header_panel">
+                <div class="container">
+                    <div class="brand ">
+                        <img src="{% static 'logo.jpg'%}" class=logo alt="logo" >
+                        <h1 class="brand_name" 
+                           
+                        >
+                            <a href="loged.html">TRAFFIC</a>
+                        </h1>
+                       
+                        <h5 class="brand_slogan">
+                            Police department
+                        </h5>
+                    </div>
+                </div>
+            </div> 
+            
+            <div >
+              <a href="../../in.html">  <button type="button" class="btn-logout" onclick="Logout()"  > Logout </button></a>
+                
+
+           </div>
+           
+            <div id="stuck_container" class="stuck_container">
+                
+                <div class="container">
+                    <img  class="user" src="{% static 'ch.jpg'%}" />
+                <p class="uname"> LOGGED IN AS ADMIN 
+                </p>
+                    <nav class="nav">
+                        <ul class="sf-menu">
+                            <li class="active">
+                                <a href="admin-lg.html"> verify </a>
+                            </li>
+                            <li>
+                                <a href="uploadcase.html">documents</a>
+                            </li>
+                            <li>
+                                <a href="uploadfine.html">upload fine</a>
+                           
+                            </li>
+                           
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    
+        
+        </header>
+        <!-- content -->
+        <section id="content" class="content">
+            
+            <div class="camera_container">
+                <div id="camera" class="camera_wrap">
+                    <div class="container">
+                    <form method="POST"> 
+                        {% csrf_token %} 
+                        {% if  data %}
+                         <input style="font-family:Roboto,sans-serif;
+                         outline: 1;
+                         background:#f3f3f3;
+                         width: 20;
+                         border:0;
+                         
+                         margin: 0 0 15px;
+                         padding: 15px;
+                         box-sizing: border-box;
+                         margin-top:10rem;
+                         font-size: 14px;" type="text" placeholder=" USER-NAME/ DL-NO" name="search" required/>
+                         <!-- <form action="search"> -->
+                        
+                         <button class="btn btn-danger" type="submit" >search</button>
+                         <!-- </form> -->
+                    <div class="container">  
+                            <table class="table table-striped table-hover">
+                                <thead >
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">UNAME</th>
+                                        <th scope="col">VEHICLE NUMBER</th>
+                                        <th scope="col">STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    
+                                    {% for rows in data %}
+                                    <tr>
+                                        <td>{{rows.id}}</td>
+                                        
+                                        <td><a  href="/udata/{{rows.uname}} ">{{rows.uname}}</a></td>
+                                        <td>{{rows.vnumb}}</td>
+                                        <td>{{rows.status}}</td>
+                                    </tr>
+                                    
+                                    {% endfor %}
+                                    
+                                    {% if messages %}
+                                    {% for msg in messages %}
+                                    <p id="msg" style="color: red;">{{msg}}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                    
+                                    {% endif %}
+                                    {% for image in veri %}
+                                        <table class="table table-striped table-hover" style="margin-top :6rem;">
+                                        <thead  >
+                                            <tr >
+                                                <th scope="col" >{{ image.ima_filename }}</th>
+                                                <th scope="col" > <a href="{{ image.ima.url }}" class="btn-upload"  >view</a>  </th>
+                                               
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                       
+                                       <!-- <tr>
+                                           <td>{{ image.ima_filename }}</td>
+                                           
+                                           <td>
+    
+                                               <a href="{{ image.ima.url }}" class="btn-upload">view</a>
+                                           </td>
+                                       </tr> -->
+                                       {% endfor %}
+                                       
+                                       
+                                      
+                                      
+    
+                                </tbody>
+                            </table>
+                        </div>    
+                       
+                       
+                        
+                         
+                   </div>
+                </div>
+            </div>
+                
+            {% if veri %}
+        </form>
+        <form action="/verify">
+         <button class="btn-logout" style="margin-top: -20rem;" > verify </button>
+        
+        </form>
+
+        {% endif %} 
+        {% if rej %}
+        <div>
+            <form action="/reject">
+            <button class="btn-logout" style="margin-top: -15rem;" > reject </button>
+        </div>
+        {% endif %} 
+       
+         
+            
+            <div class="box-color">
+                <div class="box1 index_block">
+                  <div class="container">
+                      <div class="row">
+                          <div class="grid_4">
+                              <div class="box_name fa-star">
+                                 <h4>NEW vehicle rules         
+                                    </h4>
+                              </div>
+                              <div class="box_text">
+                                  <h5>vehicle mirror information </h5>
+                                  <p>As per the new RTO rules all two wheeler should have compulsory both mirrors </p>
+                                  
+                              </div>
+                          </div>
+                          <div class="grid_4">
+                              <div class="box_name fa-tasks">
+                                    <h4>Fines 
+                                     </h4>
+                              </div>
+                              <div class="box_text">
+                                   <h5>fines payment information</h5>
+                                   <p>vehicle fine payment can be done through online using our new website </p>
+                                
+                              </div>
+                          </div>
+                          <div class="grid_4">
+                              <div class="box_name fa-car">
+                                <h4>number plates 
+                                </h4>
+                              </div>
+                              <div class="box_text">
+                                    <h5>number plates information </h5>
+                                     <p>all vehicle should have ind number plate or else they should pay fine </p>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="box-color">
+                <div class="box3">
+                    <div class="container">
+                            <h3 class="primary">A message from chief</h3>
+                            <div class="box_cnt message">
+                                <img class="centerImg" src="{% static 'ch.jpg'%}" alt="policeman"/>
+                                <h5></h5>
+                                <p>paragarph </p>
+                            </div>
+                           <div>
+                               <thead>
+                                   <tr>
+                                       <th>name</th>
+                                       <th>mime</th>
+                                       <th>file</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                  
+                               </tbody>
+                           </div>
+                    </div>    
+                </div>
+            </div>
+            
+        </section>
+        <!-- <form method="POST"> -->
+            {% csrf_token %} 
+        
+        
+        <script >
+            function Logout(){
+                window.location="in.html";
+            }
+            
+         </script>
+         </div>
+        <!--footer-->
+         <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_4">
+                        <div class="box_aside fa-phone">
+                            <span id="phone">Telephone: +1 800 603 6035</span><br>
+                             <span id="email"> E-mail: <a >trafficpolice.org</a></span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside fa-map-marker">
+                           <label class="primary">Police</label><br>
+                           <span id="adress">#27 peenya police station <br>
+                            Bangalore-560057</span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside" id="social_block">
+                            <label class="primary">Police</label>&nbsp; © <span id="copyright-year"></span> |
+                            <a class="footer_link" ></a>Privacy Policy</a>
+         
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </footer>
+    </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      HOME 
+    </title>
+    {% load static %}
+   
+    
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'cd.css'%}?v=1.1"> 
+    
+    <link rel="stylesheet" href="{% static 'grid.css'%}?v=1.1"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+    
+     
+
+    <!--script src="{%static 'headscript.js'%}"></script -->
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <header id="header" class="header" >
+             <div class="header_panel">
+                <div class="container">
+                    <div class="brand ">
+                        <img src="{% static 'logo.jpg'%}" class=logo alt="logo" >
+                        <h1 class="brand_name" 
+                           
+                        >
+                            <a href="loged.html">TRAFFIC</a>
+                        </h1>
+                       
+                        <h5 class="brand_slogan">
+                            Police department
+                        </h5>
+                    </div>
+                </div>
+            </div> 
+             <!-- <form action="logout">  -->
+            <div >
+                <button type="submit" value="submit" class="btn-logout" onclick="Logout()"  > Logout </button>
+                
+           </div>
+        <!-- </form>  -->
+            <div id="stuck_container" class="stuck_container">
+                <div class="container">
+                    <nav class="nav">
+                        <ul class="sf-menu">
+                            <li class="active">
+                                <a href="loged.html">About us</a>
+                            </li>
+                            <li>
+                                <a href="services.html">services</a>
+                            </li>
+                            <li>
+                                <a href="fine.html">Pay fine</a>
+                           
+                            </li>
+                            <li>
+                                <a href="generate.html">Generate QR</a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    
+        
+        </header>
+        <!-- content -->
+        <div class=container-fluid style="background-color: #E6DDC6;">
+        <div class="container bg-light  " >
+            <div>
+                <div><h1>Our website provides all the legal information regarding vehicle</h1></div>
+                <div>
+                <p>We give to a good service even it is small but it should be legal 
+                </p>
+            <div id="carouselExampleSlidesOnly" class="carousel slide bg-light" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    
+                  <div class="carousel-item active">
+                    <img src="{% static 'homebg1.jpg'%}?v=1.1" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'homebg2.jpg'%}?v=1.1" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'homebg3.jpg'%}?v=1.1" class="d-block w-100" alt="...">
+                    </div>
+                 
+                </div>
+              </div>
+        </div>   
+        <section id="content" class="content">
+            
+            <div class="camera_container">
+                <div id="camera" class="camera_wrap">
+                   
+                    
+                   
+                </div>
+            </div>
+                
+               
+            
+            <div class="box-color">
+                <div class="box1 index_block" style="background-color: #E6DDC6;">
+                  <div class="container">
+                    <h2 style="margin-bottom:50px ;font-size:1.5rem;"  > UPDATES          
+                    </h2>
+                      <div class="row">
+                       
+                          <div class="grid_4">
+                              <div class="box_name fa-star">
+                                 <h4>NEW vehicle rules         
+                                    </h4>
+                              </div>
+                              <div class="box_text">
+                                  <h5>vehicle mirror information </h5>
+                                  <p>As per the new RTO rules all two wheeler should have compulsory both mirrors </p>
+                                  
+                              </div>
+                          </div>
+                          <div class="grid_4">
+                              <div class="box_name fa-tasks">
+                                    <h4>Fines 
+                                     </h4>
+                              </div>
+                              <div class="box_text">
+                                   <h5>fines payment information</h5>
+                                   <p>vehicle fine payment can be done through online using our new website </p>
+                                
+                              </div>
+                          </div>
+                          <div class="grid_4" style="margin-top: 3rem;">
+                              <div class="box_name fa-car">
+                                <h4>number plates 
+                                </h4>
+                              </div>
+                              <div class="box_text">
+                                    <h5>number plates information </h5>
+                                     <p>all vehicle should have ind number plate or else they should pay fine </p>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="box-color">
+                <div class="box3">
+                    <div class="container">
+                            <h3 class="primary">A message from chief</h3>
+                            <div class="box_cnt message">
+                                <img class="centerImg" src="{% static 'ch.jpg'%}" alt="policeman"/>
+                                <h5></h5>
+                                <p> Excellence is achivable , but not without sacrifice and discipline.
+                                    And I can fight only for something that I love, love only what I respect, and respect only what I at least know. </p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- <form method="POST"> -->
+            {% csrf_token %} 
+        
+        
+        <script >
+            function Logout(){
+                window.location="in.html";
+            }
+            
+         </script>
+         </div>
+        <!--footer-->
+         <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_4">
+                        <div class="box_aside fa-phone">
+                            <span id="phone">Telephone: +1 800 603 6035</span><br>
+                             <span id="email"> E-mail: <a >trafficpolice.org</a></span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside fa-map-marker">
+                           <label class="primary">Police</label><br>
+                           <span id="adress">#27 peenya police station <br>
+                            Bangalore-560057</span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside" id="social_block">
+                            <label class="primary">Police</label>&nbsp; © <span id="copyright-year"></span> |
+                            <a class="footer_link" ></a>Privacy Policy</a>
+         
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

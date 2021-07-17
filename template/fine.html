@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      HOME 
+    </title>
+    {% load static %}
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'logo.jpg'%}" type="image/x-icon">
+    
+    <link rel="stylesheet" href="{% static 'cd.css'%}?v=1.1"> 
+    <link rel="stylesheet" href="{% static 'grid.css'%}?v=1.1"> 
+    <link rel="stylesheet " href="{% static 'card.css'%}?v=1.1">  
+    
+     
+
+    <!--script src="{%static 'headscript.js'%}"></script -->
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <header id="header" class="header" >
+             <div class="header_panel">
+                <div class="container">
+                    <div class="brand ">
+                        <img src="{% static 'logo.jpg'%}" class=logo alt="logo" >
+                        <h1 class="brand_name" 
+                           
+                        >
+                            <a href="loged.html">TRAFFIC</a>
+                        </h1>
+                       
+                        <h5 class="brand_slogan">
+                            Police department
+                        </h5>
+                    </div>
+                </div>
+            </div> 
+            
+            <div >
+                <button type="button" class="btn-logout" onclick="Logout()"  > Logout </button>
+           </div>
+            <div id="stuck_container" class="stuck_container">
+                <div class="container">
+                    <nav class="nav">
+                        <ul class="sf-menu">
+                            <li >
+                                <a href="loged.html">About us</a>
+                            </li>
+                            <li >
+                                <a href="services.html">services</a>
+                            </li>
+                            <li class="active">
+                                <a href="fine.html">Pay fine</a>
+                           
+                            </li>
+                            <li>
+                                <a href="generate.html">Generate QR</a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    
+        
+        </header>
+        <!-- content -->
+        <section id="content" class="content">
+            
+            <div class="camera_container">
+                 
+                
+                
+
+                {% if total %}   
+            <div>
+                
+                    
+                   
+                 <input style="font-family:Roboto,sans-serif;
+                 outline: 1;
+                 background:#f3f3f3;
+                 width: 20;
+                 border:0;
+                 
+                 margin: 0 0 15px;
+                 padding: 15px;
+                 box-sizing: border-box;
+                 margin-top:10rem;
+                 font-size: 14px;" type="text" placeholder="TOTAL FINE ₹ {{ total}}" name="fine" />
+                 <form action="payfine">  
+                 <button class="btn-upload">payfine</button>
+                 <div style="margin-top: 2rem;">
+                 <table class="table table-striped table-hover">
+                    <thead >
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">UNAME</th>
+                            <th scope="col">VEHICLE NUMBER</th>
+                            <th scope="col">FINE </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody ><tr>
+                        {%  if  dis %}
+                        <td>{{dis.id}}</td> 
+                        <td>{{dis.uname}}</td>
+                        <td>{{dis.vnumb}}</td> 
+                        {% endif %}       
+                        {% if fine %} 
+                        <td>{{total}}</td>
+                        </tr>
+                        {% endif %}
+                </table>
+            </div>
+                 <div>
+                 
+                 
+                  
+                  
+                  
+                 
+                {% endif %}
+                <div>
+                    
+                    {% if messages %}
+                    {% for msg in messages %}
+                    <p id="msg" style="color:green;padding-top:10rem;margin-left: 5rem;">{{msg}}</p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                 {% csrf_token %}
+                 {% if card %}
+                 <form method="POST">
+                    {% csrf_token %}
+                <div class="login-page">
+                    <div class="form">
+                        <form class="register">
+                            <input type="number" accept="" placeholder="CARD NUMBER"  required/>
+                            <input type="text" placeholder="YOUR NAME "  required/>
+                            <div class=row>
+                                <div class=col>
+                                    <input type="text" placeholder="valid upto"  required/>
+                                </div>
+                                <div class=col>
+                                    <input type="password" placeholder="cvv/cvv2"  required/>
+                                </div>
+                            </div>
+                            
+                            
+                        </form>    
+                           
+            
+                
+                <form action="clrfine"> 
+                <button class="btn-upload">pay</button>
+            </form>
+            
+            {% endif %}
+                            
+                                  
+                            
+                
+                                
+                            
+                        
+                   
+                       
+                    </div>
+                </div> 
+                   
+                    </form>
+                       
+            </div>
+            </div>
+            
+</div>
+                         
+           
+           
+        </section>
+        <!-- <form method="POST"> -->
+            {% csrf_token %} 
+        
+        
+        <script >
+            function Logout(){
+                window.location="in.html";
+            }
+            
+         </script>
+         </div>
+        <!--footer-->
+         <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_4">
+                        <div class="box_aside fa-phone">
+                            <span id="phone">Telephone: +1 800 603 6035</span><br>
+                             <span id="email"> E-mail: <a >trafficpolice.org</a></span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside fa-map-marker">
+                           <label class="primary">Police</label><br>
+                           <span id="adress">#27 peenya police station <br>
+                            Bangalore-560057</span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box_aside" id="social_block">
+                            <label class="primary">Police</label>&nbsp; © <span id="copyright-year"></span> |
+                            <a class="footer_link" ></a>Privacy Policy</a>
+         
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </footer>
+    </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</html>
